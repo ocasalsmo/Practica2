@@ -20,7 +20,9 @@ st.title('Most used language in github')
 @st.cache_data
 def load_data():
     #df = pd.read_csv("preprocessed_dataset.csv")
-    df = pd.read_csv("hf://datasets/Racsgo/PreprocessedDataset/preprocessed_dataset.csv")
+    df = pd.read_csv("https://huggingface.co/datasets/Racsgo/PreprocessedDataset/resolve/main/preprocessed_dataset_redux.csv")
+
+    print(df.shape)
     
 
     df["createdAt"] = pd.to_datetime(df["createdAt"])
@@ -122,7 +124,7 @@ def Create_Barplots_Memory(clasific, title, colour = "blue"):
                 text="Llenguatge de programació"
             )
         ),
-        xaxis_range=[0,700000],
+        xaxis_range=[0,21000],
         showlegend=False)
     
     return fig_50
@@ -287,7 +289,7 @@ def graph_counts(metric, metric_name):
                     text="Llenguatge de programació"
                 )
             ),
-            xaxis_range=[0,210000],
+            xaxis_range=[0,11000],
             showlegend=False)
 
     return st.plotly_chart(fig)
